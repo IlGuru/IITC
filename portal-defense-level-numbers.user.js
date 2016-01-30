@@ -2,11 +2,11 @@
 // @id             iitc-plugin-portal-defense-level@ilguru
 // @name           IITC plugin: Portal Defense Level
 // @category       Layer
-// @version        1.0.9.20160130.000009
+// @version        1.0.9.20160130.000010
 // @namespace      https://github.com/jonatkins/ingress-intel-total-conversion
-// @updateURL      https://github.com/IlGuru/IITC/blob/master/portal-defense-level-numbers.meta.js
-// @downloadURL    https://github.com/IlGuru/IITC/blob/master/portal-defense-level-numbers.user.js
-// @description    [ilguru-2016-01-30-000009] Show portal defense level on map.
+// @updateURL      https://raw.githubusercontent.com/IlGuru/IITC/master/portal-defense-level-numbers.meta.js
+// @downloadURL    https://raw.githubusercontent.com/IlGuru/IITC/master/portal-defense-level-numbers.user.js
+// @description    [ilguru-2016-01-30-000010] Show portal defense level on map.
 // @include        https://www.ingress.com/intel*
 // @include        http://www.ingress.com/intel*
 // @match          https://www.ingress.com/intel*
@@ -74,20 +74,24 @@ window.plugin.portalDefenseLevelNumbers.addLabel = function(guid,latLng) {
   // add portal level to layers
   var p = window.portals[guid];
   var d = p.options.details;
-  var m = d.mods;
+  var m;
   var levelNumber = 0;
   
-  if ( m[0].name == "Portal Shield" ) {
-	levelNumber = levelNumber + (parseInt( m[0].stats.MITIGATION ) / 10);
-  }
-  if ( m[1].name == "Portal Shield" ) {
-	levelNumber = levelNumber + (parseInt( m[1].stats.MITIGATION ) / 10);
-  }
-  if ( m[2].name == "Portal Shield" ) {
-	levelNumber = levelNumber + (parseInt( m[2].stats.MITIGATION ) / 10);
-  }
-  if ( m[3].name == "Portal Shield" ) {
-	levelNumber = levelNumber + (parseInt( m[3].stats.MITIGATION ) / 10);
+  for each (m in d.mods) {
+	  if ( m.name == "Portal Shield" ) {
+		//	COMMON
+		if ( m.stats.MITIGATION == "30" ) 
+			levelNumber = levelNumber + 1;
+		//	RARE
+		if ( m.stats.MITIGATION == "40" ) 
+			levelNumber = levelNumber + 2;
+		//	VERY_RARE
+		if ( m.stats.MITIGATION == "60" ) 
+			levelNumber = levelNumber + 3;
+		//	AXA
+		if ( m.stats.MITIGATION == "70" ) 
+			levelNumber = levelNumber + 4;
+	  }
   }
   
   var DefLevel = L.marker(latLng, {
