@@ -2,7 +2,7 @@
 // @id             iitc-plugin-portal-defense-level@ilguru
 // @name           IITC plugin: Portal Defense Level
 // @category       Layer
-// @version        1.0.9.20160130.000010
+// @version        1.0.9.20160130.000011
 // @namespace      https://github.com/jonatkins/ingress-intel-total-conversion
 // @updateURL      https://raw.githubusercontent.com/IlGuru/IITC/master/portal-defense-level-numbers.meta.js
 // @downloadURL    https://raw.githubusercontent.com/IlGuru/IITC/master/portal-defense-level-numbers.user.js

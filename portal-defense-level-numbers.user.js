@@ -2,11 +2,11 @@
 // @id             iitc-plugin-portal-defense-level@ilguru
 // @name           IITC plugin: Portal Defense Level
 // @category       Layer
-// @version        1.0.9.20160130.000010
+// @version        1.0.9.20160130.000011
 // @namespace      https://github.com/jonatkins/ingress-intel-total-conversion
 // @updateURL      https://raw.githubusercontent.com/IlGuru/IITC/master/portal-defense-level-numbers.meta.js
 // @downloadURL    https://raw.githubusercontent.com/IlGuru/IITC/master/portal-defense-level-numbers.user.js
-// @description    [ilguru-2016-01-30-000010] Show portal defense level on map.
+// @description    [ilguru-2016-01-30-000011] Show portal defense level on map.
 // @include        https://www.ingress.com/intel*
 // @include        http://www.ingress.com/intel*
 // @match          https://www.ingress.com/intel*
@@ -76,6 +76,8 @@ window.plugin.portalDefenseLevelNumbers.addLabel = function(guid,latLng) {
   var d = p.options.details;
   var m;
   var levelNumber = 0;
+
+  debugger;
   
   for each (m in d.mods) {
 	  if ( m.name == "Portal Shield" ) {
